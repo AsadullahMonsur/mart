@@ -31,6 +31,12 @@ task stage() {
 }
 war.mustRunAfter clean
 
+task copyToLib(type: Copy) {
+	into "$buildDir/server"
+}
+
+stage.dependsOn(copyToLib)
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
