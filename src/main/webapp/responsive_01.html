@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="height=device-height,width=device-width,initial-scale=1">
+    <title>Homepage</title>
+
+    <link rel="stylesheet"
+          href="../static/css/homepage.css"
+          th:href="@{/css/homepage.css}">
+
+</head>
+<body>
+
+<div class="view_layout">
+    <div>
+        <!╌  layout top navbar ╌>
+        <nav>
+            <ul>
+                <li>
+                    <button id="menu_id"
+                            type="button" > Menu </button>
+                    <div id="drawer_id"
+                         tabindex="0">
+                        <!╌  layout drawer ╌>
+                        <div>
+                            <form  action="#"
+                                   th:action="@{home}"
+                                   th:object="${selection}"
+                                   method="post">
+
+                                <ul>
+                                    <li th:each="color : ${options}">
+                                        <input type="checkbox"
+                                               th:field="*{options}"
+                                               th:value="${color}"/>
+
+                                        <label th:for="${#ids.prev('options')}"
+                                               th:text="${color}"> RED
+                                        </label>
+                                    </li>
+                                </ul>
+
+                            </form>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <button type="submit" > Trending </button>
+                </li>
+
+                <li>
+                    <button type="submit" > About </button>
+                </li>
+
+                <li>
+                    <button type="submit" > Contact </button>
+                </li>
+
+                <li>
+                    <form action="#"
+                          th:action="@{home}"
+                          th:object="${data}"
+                          method="post">
+                        <input type="text"
+                               th:field="*{search_txt}" />
+
+                        <button type="submit"> Search</button>
+                    </form>
+                </li>
+
+                <li>
+                    <button type="submit" > Wish-List</button>
+                </li>
+
+                <li>
+                    <button type="submit" > Account</button>
+                </li>
+
+                <li>
+                    <button type="submit" > Logo </button>
+                </li>
+
+                <!-- other components  as list oder,
+                   path should be given as required-->
+            </ul>
+        </nav>
+    </div>
+
+    <div id="main_content_id">
+        <!╌  layout main content ╌>
+        <div id="demo_id">
+            <p> Please Refresh or Click Search</p>
+        </div>
+        <div id="notification_id">
+            <div>
+                <img id="notification_bar_icon01"
+                     src=""
+                     th:src="@{/images/notification/notification_black.png}"
+                     width="32px"
+                     height="32px"/>
+
+                <img id="notification_bar_icon02"
+                     src=""
+                     th:src="@{/images/notification/notification_white.png}"
+                     width="32px"
+                     height="32px"/>
+                <p> Notification </p>
+            </div>
+            <div>
+                <p> Your input is taken to Search </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1">
+    <title>Homepage</title>
+
+    <link rel="stylesheet"
+          href="../static/css/homepage.css"
+          th:href="@{/css/homepage.css}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/LATEST-VERSION">
+
+    <link rel="icon" th:href="@{/images/logo/orange.png}">
+</head>
+<body>
+
+<div class="view_layout">
+    <!╌  drawer menu initial state unchecked ╌>
+    <input id="menu_id" type="checkbox"/>
+    <label  id="menu_label_id" for="menu_id">
+        <img src=""
+             th:src="@{/images/menu/menu.png}"
+             width="32px"
+             height="32px"
+             style="background:#fff"/>
+        Menu
+    </label>
+    <label  id="menu_label_close_id" for="menu_id">
+        <img src=""
+             th:src="@{/images/close/close.png}"
+             width="32px"
+             height="32px"
+             style="background:#fff"/>
+        Close
+    </label>
+
+    <div id="drawer_id">
+        <!╌  layout drawer ╌>
+        <div id="section_01_id">
+        </div>
+        <div id="section_02_id">
+            <div id="section_02_header_id">
+                <p>Customer Type</p>
+            </div>
+
+            <div id="section_02_content_id">
+                 <div id="section_02_content_left_id">
+                     <form  action="#"
+                            th:action="@{home/do}"
+                            th:object="${customer_type}"
+                            method="post">
+
+                         <ul>
+                             <li th:each="element : ${all_options}">
+                                 <input type="checkbox"
+                                        th:field="*{all_options}"
+                                        th:value="${element}"/>
+
+                                 <label th:for="${#ids.prev('all_options')}"
+                                        th:text="${element}"> option
+                                 </label>
+                             </li>
+                         </ul>
+                     </form>
+                 </div>
+                <div id="section_02_content_right_id">
+                    <form  action="#"
+                           th:action="@{home}"
+                           th:object="${customer_type}"
+                           method="post">
+
+                        <ul>
+                            <li th:each="element : ${options}">
+                                <input type="checkbox"
+                                       th:field="*{options}"
+                                       th:value="${element}"
+                                       th:checked="${options_check_flag}"/>
+
+                                <label th:for="${#ids.prev('options')}"
+                                       th:text="${element}"> option
+                                </label>
+                            </li>
+                        </ul>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="section_03_id">
+        </div>
+        <div id="section_04">
+        </div>
+    </div>
+
+    <div id="main_content_id">
+        <!╌  layout main content ╌>
+        <div id="top_navigation_bar_id">
+            <nav>
+                <ul>
+                    <li>
+                        <button type="submit" >
+
+                        </button>
+                    </li>
+
+                    <li>
+                        <button type="submit" >
+                            Trending
+                        </button>
+                    </li>
+
+                    <li>
+                        <button type="submit" >
+                            About
+                        </button>
+                    </li>
+
+                    <li>
+                        <button type="submit" >
+                            Contact
+                        </button>
+                    </li>
+
+                    <li>
+                        <form action="#"
+                              th:action="@{home}"
+                              th:object="${data}"
+                              method="post">
+                            <input type="text"
+                                   th:field="*{search_txt}" />
+
+                            <button type="submit"> Search</button>
+                        </form>
+                    </li>
+
+                    <li>
+                        <button type="submit" >
+                            Wish-List
+                        </button>
+                    </li>
+
+                    <li>
+                        <button type="submit" >
+                            Account
+                        </button>
+                    </li>
+
+                    <li>
+                        <img id="logo_orange"
+                             src=""
+                             th:src="@{/images/logo/orange.png}"
+                             width="64px"
+                             height="64px"
+                        />
+                        <img id="logo_white"
+                             src=""
+                             th:src="@{/images/logo/orange_white.png}"
+                             width="64px"
+                             height="64px"
+                        />
+                    </li>
+
+                    <!-- other components  as list oder,
+                       path should be given as required-->
+                </ul>
+            </nav>
+        </div>
+
+        <div id="content_viewer_id">
+            <div id="tab_bar_id">
+                <button>Lets Go</button>
+            </div>
+
+            <div id="content_body_id">
+                <div id="notification_id">
+                    <div>
+                        <img id="notification_bar_icon01"
+                             src=""
+                             th:src="@{/images/notification/notification_black.png}"
+                             width="32px"
+                             height="32px"/>
+
+                        <img id="notification_bar_icon02"
+                             src=""
+                             th:src="@{/images/notification/notification_white.png}"
+                             width="32px"
+                             height="32px"/>
+                        <p> Notification </p>
+                    </div>
+                    <div>
+                        <p> Your input is taken to Search </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
