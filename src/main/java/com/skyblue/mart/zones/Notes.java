@@ -21,4 +21,5 @@ public class Notes {
 }
 */
 //server.port=2959
+//web: java -jar build/server/webapp-runner-*.jar build/libs/*.war
 }
